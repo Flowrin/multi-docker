@@ -15,7 +15,7 @@ after_success:
   - docker build -t flowrin13/multi-worker ./worker
 
   #LOGIN DOCKER HUB
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push flowrin13/multi-client
   - docker push flowrin13/multi-nginx
