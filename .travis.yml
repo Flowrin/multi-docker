@@ -21,3 +21,16 @@ after_success:
   - docker push flowrin13/multi-nginx
   - docker push flowrin13/multi-server
   - docker push flowrin13/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: multi-docker
+  env: Multidocker-env
+  bucket_name: elasticbeanstalk-eu-west-2-295592905527 # look for S3 service and copy region
+  bucket_path: docker-multi #doesn't matter
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY 
+  secret_accsess_key:
+    secure: $AWS_SECRET_KEY
