@@ -1,9 +1,9 @@
 module.exports = {
   redisHost: process.env.REDIS_HOST,
   redisPort: process.env.REDIS_PORT,
-  pgUser: process.env.POSTGRES_USER,
-  pgHost: process.env.POSTGRES_HOST,
-  pgDatabase: process.env.POSTGRES_DATABASE,
-  pgPassword: process.env.POSTGRES_PASSWORD,
-  pgPort: process.env.POSTGRES_PORT
+  POSTGRES_USER: process.env.POSTGRES_USER,
+  POSTGRES_HOST: process.env.POSTGRES_HOST,
+  POSTGRES_DATABASE: process.env.POSTGRES_DATABASE,
+  POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
+  POSTGRES_PORT: process.env.POSTGRES_PORT
 };

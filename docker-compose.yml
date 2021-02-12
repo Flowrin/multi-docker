@@ -22,7 +22,6 @@ services:
       - POSTGRES_DATABASE=postgres
       - POSTGRES_PASSWORD=postgres_password
       - POSTGRES_PORT=5432
-      - POSTGRES_HOST_AUTH_METHOD=trust
   client:
     build:
       dockerfile: Dockerfile.dev

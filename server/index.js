@@ -12,11 +12,11 @@ app.use(bodyParser.json());
 // Postgres Client Setup
 const { Pool } = require('pg');
 const pgClient = new Pool({
-  user: keys.pgUser,
-  host: keys.pgHost,
-  database: keys.pgDatabase,
-  password: keys.pgPassword,
-  port: keys.pgPort
+  user: keys.POSTGRES_USER,
+  host: keys.POSTGRES_HOST,
+  database: keys.POSTGRES_DATABASE,
+  password: keys.POSTGRES_PASSWORD,
+  port: keys.POSTGRES_PORT
 });
 pgClient.on('error', () => console.log('Lost PG connection'));
 
@@ -54,7 +54,7 @@ app.get('/values/current', async (req, res) => {
 app.post('/values', async (req, res) => {
   const index = req.body.index;
 
-  if (parseInt(index,10) > 40) {
+  if (parseInt(index) > 40) {
     return res.status(422).send('Index too high');
   }
 
@@ -62,7 +62,7 @@ app.post('/values', async (req, res) => {
   redisPublisher.publish('insert', index);
   pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
-  res.send({ index: parseInt(index,10) });
+  res.send({ working: true });
 });
 
 app.listen(5000, err => {
